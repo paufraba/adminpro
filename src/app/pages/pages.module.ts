@@ -5,6 +5,8 @@ import { Grafico1Component } from './grafico1/grafico1.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages.routes';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
     declarations: [
@@ -21,7 +23,8 @@ import { PagesRoutingModule } from './pages.routes';
     ],
     imports: [
         SharedModule,
-        PagesRoutingModule
+        PagesRoutingModule,
+        FormsModule
     ]
 })
 export class PagesModule { }
