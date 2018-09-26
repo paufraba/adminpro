@@ -1,0 +1,16 @@
+<h3>{{ leyenda }}</h3>
+
+<div class="input-group">
+    <span class="input-group-btn">
+        <button (click)="cambiarValor(-5)" class="btn btn-primary" type="button" id="inputGroupFileAddon03">
+            <i class="mdi mdi-minus"></i>
+        </button>
+    </span>
+    <input #txtPorcentaje type="number" class="form-control" name="porcentaje" [(ngModel)]="porcentaje" (ngModelChange)="onChanges($event)"
+        min="1" max="100">
+    <span class="input-group-btn">
+        <button (click)="cambiarValor(5)" class="btn btn-primary" type="button" id="inputGroupFileAddon04">
+            <i class="mdi mdi-plus"></i>
+        </button>
+    </span>
+</div>
