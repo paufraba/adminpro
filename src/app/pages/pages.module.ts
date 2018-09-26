@@ -8,6 +8,7 @@ import { PagesRoutingModule } from './pages.routes';
 import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { ChartsModule } from 'ng2-charts';
+import { GraficoDonutsComponent } from '../components/grafico-donuts/grafico-donuts.component';
 
 
 @NgModule({
@@ -16,13 +17,15 @@ import { ChartsModule } from 'ng2-charts';
         ProgressComponent,
         Grafico1Component,
         PagesComponent,
-        IncrementadorComponent
+        IncrementadorComponent,
+        GraficoDonutsComponent
     ],
     exports: [
         DashboardComponent,
         ProgressComponent,
         Grafico1Component,
-        PagesComponent
+        PagesComponent,
+        GraficoDonutsComponent
     ],
     imports: [
         SharedModule,

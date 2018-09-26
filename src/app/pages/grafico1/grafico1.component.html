@@ -2,12 +2,8 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-
-                <div style="display: block">
-                    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-                </div>
-
+                <app-grafico-donuts [doughnutChartLabels]="graficos.grafico1.labels" [doughnutChartData]="graficos.grafico1.data"
+                    [leyenda]="graficos.grafico1.leyenda"></app-grafico-donuts>
             </div>
         </div>
     </div>
@@ -15,12 +11,27 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
+                <app-grafico-donuts [doughnutChartLabels]="graficos.grafico2.labels" [doughnutChartData]="graficos.grafico2.data"
+                    [leyenda]="graficos.grafico2.leyenda"></app-grafico-donuts>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <app-grafico-donuts [doughnutChartLabels]="graficos.grafico3.labels" [doughnutChartData]="graficos.grafico3.data"
+                    [leyenda]="graficos.grafico3.leyenda"></app-grafico-donuts>
+            </div>
+        </div>
+    </div>
 
-                <div style="display: block">
-                    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-                        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-                </div>
-
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <app-grafico-donuts [doughnutChartLabels]="graficos.grafico4.labels" [doughnutChartData]="graficos.grafico4.data"
+                    [leyenda]="graficos.grafico4.leyenda"></app-grafico-donuts>
             </div>
         </div>
     </div>

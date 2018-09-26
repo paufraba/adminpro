@@ -10,6 +10,7 @@ import { APP_ROUTES } from './app.routes';
 import { PagesModule } from './pages/pages.module';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
     declarations: [
         AppComponent,
