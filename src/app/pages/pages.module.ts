@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { ChartsModule } from 'ng2-charts';
 import { GraficoDonutsComponent } from '../components/grafico-donuts/grafico-donuts.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { GraficoDonutsComponent } from '../components/grafico-donuts/grafico-don
         Grafico1Component,
         PagesComponent,
         IncrementadorComponent,
-        GraficoDonutsComponent
+        GraficoDonutsComponent,
+        AccountSettingsComponent
     ],
     exports: [
         DashboardComponent,
