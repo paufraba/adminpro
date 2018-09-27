@@ -22,6 +22,14 @@ export class SidebarService {
                     titulo: 'Gráfico Donuts',
                     url: '/grafico1'
                 },
+                {
+                    titulo: 'Promesas',
+                    url: '/promesas'
+                },
+                {
+                    titulo: 'Obersables (rxjs)',
+                    url: '/rxjs'
+                },
             ]
         }
     ];
