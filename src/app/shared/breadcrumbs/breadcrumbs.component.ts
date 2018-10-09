@@ -18,7 +18,7 @@ export class BreadcrumbsComponent implements OnInit {
 
         this.getDataReoute()
             .subscribe(data => {
-                console.log(data);
+                // console.log(data);
 
                 this.titulo = data.titulo;
                 this.pageTitle.setTitle(this.titulo);
