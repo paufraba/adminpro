@@ -33,8 +33,8 @@ export class RxjsComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        //Called once, before the instance is destroyed.
-        //Add 'implements OnDestroy' to the class.
+        // Called once, before the instance is destroyed.
+        // Add 'implements OnDestroy' to the class.
         console.log('Página rxjs cerrada');
         this.subs.unsubscribe();
     }
