@@ -1,17 +1,22 @@
+// Módulos
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { PagesRoutingModule } from './pages.routes';
+import { PipesModule } from '../pipes/pipes.module';
+
+// Componentes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Grafico1Component } from './grafico1/grafico1.component';
 import { PagesComponent } from './pages.component';
-import { SharedModule } from '../shared/shared.module';
-import { PagesRoutingModule } from './pages.routes';
-import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
-import { ChartsModule } from 'ng2-charts';
 import { GraficoDonutsComponent } from '../components/grafico-donuts/grafico-donuts.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -24,7 +29,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonutsComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         DashboardComponent,
@@ -37,7 +43,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         SharedModule,
         PagesRoutingModule,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule
     ]
 })
 export class PagesModule { }
