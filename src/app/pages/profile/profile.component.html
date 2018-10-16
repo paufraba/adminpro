@@ -6,19 +6,25 @@
                 <h4 class="card-title">Perfil de usuario</h4>
                 <h6 class="card-subtitle">Datos del usuario</h6>
 
-                <form class="form p-t-20">
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20">
                     <div class="form-group">
                         <label for="exampleInputuname">Nombre</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-user"></i></div>
-                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Username">
+                            <div class="input-group-addon">
+                                <i class="ti-user"></i>
+                            </div>
+                            <input [ngModel]="usuario.nombre" name="nombre" type="text" class="form-control"
+                                placeholder="Nombre de usuario" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Correo del usuario</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="ti-email"></i></div>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            <div class="input-group-addon">
+                                <i class="ti-email"></i>
+                            </div>
+                            <input [ngModel]="usuario.email" [disabled]="usuario.google" name="email" type="email"
+                                class="form-control" placeholder="Correo del usuario" required>
                         </div>
                     </div>
 
@@ -39,17 +45,19 @@
                 <h4 class="card-title">Imágen de usuario</h4>
                 <h6 class="card-subtitle">Datos del usuario</h6>
 
-                <img src="" alt="">
+                <div class="text-center">
+                    <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="img-thumbnail rounded w200">
+                    <img *ngIf="imagenTemp" [src]="imagenTemp" class="img-thumbnail rounded w200">
+                </div>
 
-                <div class="form-group">
-                    <label for="imagen">Imagen a cargar</label>
-                    <input type="file" class="form-control-file" name="imagen" id="imagen" placeholder="Imagen"
-                        aria-describedby="fileHelpId">
-                    <small id="fileHelpId" class="form-text text-muted">Help text</small>
+                <div class="form-group mt-4">
+                    <input (change)="seleccionarImagen($event.target.files[0])" type="file" class="form-control-file"
+                        name="imagen" id="imagen" placeholder="Imagen" aria-describedby="fileHelpId">
+                    <small id="fileHelpId" class="form-text text-muted">Seleccione la imagen de usuario</small>
                 </div>
 
 
-                <button type="button" class="btn btn-block btn-success  mt-3">
+                <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success  mt-3">
                     <i class="fa fa-save    "></i> Actualiza foto</button>
             </div>
 

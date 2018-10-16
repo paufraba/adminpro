@@ -5,6 +5,7 @@ import { URL_API } from '../../config/config';
 // import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 
 @Injectable({
@@ -15,7 +16,8 @@ export class UsuarioService {
     token: string;
 
     constructor(public http: HttpClient,
-        public router: Router) {
+        public router: Router,
+        public _sa: SubirArchivoService) {
         // console.log('Servicio de usuario listo');
         this.cargarStorage();
     }
@@ -55,6 +57,19 @@ export class UsuarioService {
                 })
             )
             ;
+    }
+
+    actualizarUsuario(usuario: Usuario) {
+        const url = URL_API + '/usuario/' + usuario._id + '?token=' + this.token;
+
+        return this.http.put(url, usuario).pipe(
+            map((resp: any) => {
+                this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+                swal('Usuario actualizado', usuario.nombre, 'success');
+
+                return true;
+            })
+        );
     }
 
     loginGoogle(token: string) {
@@ -97,5 +112,19 @@ export class UsuarioService {
         localStorage.removeItem('usuario');
 
         this.router.navigate(['/login']);
+    }
+
+    cambiarImagen(imagen: File, id: string) {
+        this._sa.subirArchivo(imagen, 'usuarios', id)
+            .then((resp: any) => {
+                // console.log(resp);
+                this.usuario.img = resp.usuario.img;
+                swal('Imagen actualizada', this.usuario.nombre, 'success');
+                this.guardarStorage(id, this.token, this.usuario);
+            })
+            .catch(resp => {
+                console.error(resp);
+
+            });
     }
 }
