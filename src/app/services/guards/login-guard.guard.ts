@@ -13,7 +13,7 @@ export class LoginGuardGuard implements CanActivate {
         console.log('>> Login Guard <<');
 
         if (this._us.estaLogueado()) {
-            console.log('Acceso OK');
+            // console.log('Acceso OK');
 
             return true;
 
