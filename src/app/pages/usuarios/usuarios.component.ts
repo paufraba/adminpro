@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from 'src/app/services/service.index';
+import { ModalUploadService } from 'src/app/components/modal-upload/modal-upload.service';
 
 declare var swal: any;
 
@@ -15,10 +16,14 @@ export class UsuariosComponent implements OnInit {
     total = 0;
     cargando = true;
 
-    constructor(public _us: UsuarioService) { }
+    constructor(public _us: UsuarioService,
+        public _mus: ModalUploadService) { }
 
     ngOnInit() {
         this.cargarUsuarios();
+        this._mus.notificacion.subscribe(resp => {
+            this.cargarUsuarios();
+        });
     }
 
     cargarUsuarios() {
@@ -35,8 +40,7 @@ export class UsuariosComponent implements OnInit {
 
     cambiarDesde(valor: number) {
         const desde = this.desde + valor;
-        console.log(desde);
-
+        // console.log(desde);
 
         if (desde >= this.total) {
             return;
@@ -73,15 +77,26 @@ export class UsuariosComponent implements OnInit {
             dangerMode: true,
         })
             .then((borrar) => {
-                console.log(borrar);
+                // console.log(borrar);
 
                 if (borrar) {
-                    swal('Poof! Your imaginary file has been deleted!', {
-                        icon: 'success',
-                    });
+                    this._us.borrarUsuario(usuario._id)
+                        .subscribe(resp => {
+                            // console.log(resp);
+                            this.cargarUsuarios();
+                        });
                 }
             });
 
+    }
+
+    guardarUsuario(usuario: Usuario) {
+        this._us.actualizarUsuario(usuario)
+            .subscribe();
+    }
+
+    mostrarModal(id: string) {
+        this._mus.mostrarModal('usuarios', id);
     }
 
 }
