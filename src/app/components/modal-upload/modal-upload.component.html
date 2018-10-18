@@ -5,7 +5,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Subir imagen</h5>
                     <button (click)="ocultarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -19,7 +19,7 @@
                     <div class="form-group mt-4">
                         <input (change)="seleccionarImagen($event.target.files[0])" type="file" class="form-control-file"
                             name="imagen" id="imagen" placeholder="Imagen" aria-describedby="fileHelpId">
-                        <small id="fileHelpId" class="form-text text-muted">Seleccione la imagen de usuario</small>
+                        <small id="fileHelpId" class="form-text text-muted">Seleccione la imagen ({{ _mu.tipo }})</small>
                     </div>
                 </div>
                 <div class="modal-footer">
