@@ -21,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
         ProfileComponent,
         UsuariosComponent,
         ModalUploadComponent,
-        HospitalesComponent
+        HospitalesComponent,
+        MedicosComponent
     ],
     exports: [
         DashboardComponent,
