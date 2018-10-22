@@ -19,6 +19,12 @@
                                 <option value="">Seleccione un hospital</option>
                                 <option value="{{hosp._id}}" *ngFor="let hosp of hospitales">{{ hosp.nombre }}</option>
                             </select>
+
+                            <div class="col-sm-6">
+                                <div class="card card-body">
+                                    <img [src]="hospital.img | imagen: 'hospitales'" [alt]="hospital.nombre" class="img-fluid">
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
@@ -30,12 +36,6 @@
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="card card-body">
-            <h3 class="box-title m-b-0">Hospital <i class="fa fa-hospital-o" aria-hidden="true"></i></h3>
-            <img [src]="hospital.img | imagen: 'hospitales'" [alt]="hospital.nombre" class="img-fluid">
-        </div>
-    </div>
     <div class="col-md-3" *ngIf="medico._id">
         <div class="card card-body">
             <h3 class="box-title m-b-0">Imagen</h3>
