@@ -50,10 +50,9 @@
                     <tbody>
                         <tr *ngFor="let medico of medicos">
                             <td class="w70">
-                                <img (click)="mostrarModal(medico._id)" [src]="medico.img | imagen:'medicos'" class="img-thumbnail w50 pointer"
-                                    alt=""></td>
+                                <img [src]="medico.img | imagen:'medicos'" class="img-thumbnail w50 pointer" alt=""></td>
                             <td>{{ medico.nombre }}</td>
-                            <td>{{ medico.hospital?.nombre }}</td>
+                            <td>{{ medico.hospital['nombre'] }}</td>
                             <td>
                                 <button [routerLink]="['/medico', medico._id]" type="button" class="btn btn-primary">
                                     <i class="fa fa-edit"></i>

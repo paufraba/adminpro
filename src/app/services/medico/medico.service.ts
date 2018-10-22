@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { URL_API } from 'src/app/config/config';
 import { map } from 'rxjs/internal/operators/map';
 import { UsuarioService } from '../usuario/usuario.service';
+import { Medico } from '../../models/medico.model';
 
 @Injectable({
     providedIn: 'root'
@@ -22,6 +23,16 @@ export class MedicoService {
                 this.totalMedicos = resp.total;
 
                 return resp.medicos;
+            })
+        );
+    }
+
+    obtenerMedico(id: string) {
+        const url = URL_API + '/medico/' + id;
+
+        return this.http.get(url).pipe(
+            map((resp: any) => {
+                return resp.medico;
             })
         );
     }
@@ -45,5 +56,36 @@ export class MedicoService {
                 return true;
             })
         );
+    }
+
+    guardarMedico(medico: Medico): Observable<any> {
+        let url = URL_API + '/medico';
+
+        if (medico._id) {
+            url += `/${medico._id}?token=${this._us.token}`;
+            return this.http.put(url, medico).pipe(
+                map((resp: any) => {
+                    swal('Médico modificado', 'El médico ha sido modificado correctamente', {
+                        icon: 'success',
+                    });
+
+                    return resp.medico;
+                })
+            );
+
+        } else {
+            url += `?token=${this._us.token}`;
+            return this.http.post(url, medico).pipe(
+                map((resp: any) => {
+                    swal('Médico creado', 'El médico ha sido creado correctamente', {
+                        icon: 'success',
+                    });
+
+                    return resp.medico;
+                })
+            );
+
+        }
+
     }
 }
