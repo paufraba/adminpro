@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_API } from '../../config/config';
-// import 'rxjs/add/operator/map';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+import { empty, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -60,6 +60,11 @@ export class UsuarioService {
 
                     return resp.usuario;
                 })
+                , catchError(err => {
+                    console.error(err.error.mensaje);
+                    swal(err.error.mensaje, err.error.errors.message, 'error');
+                    return throwError(err);
+                })
             )
             ;
     }
@@ -76,6 +81,11 @@ export class UsuarioService {
                 swal('Usuario actualizado', usuario.nombre, 'success');
 
                 return true;
+            })
+            , catchError(err => {
+                console.error(err.error.mensaje);
+                swal(err.error.mensaje, err.error.errors.message, 'error');
+                return throwError(err);
             })
         );
     }
@@ -105,10 +115,12 @@ export class UsuarioService {
         return this.http.post(url, usuario).pipe(
             map((resp: any) => {
                 this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
-
-                // console.log(resp);
-
                 return true;
+            })
+            , catchError(err => {
+                console.error(err.error.mensaje);
+                swal('Error en el login', err.error.mensaje, 'error');
+                return throwError(err);
             })
         );
     }
