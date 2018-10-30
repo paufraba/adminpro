@@ -5,6 +5,7 @@ import { URL_API } from 'src/app/config/config';
 import { map } from 'rxjs/internal/operators/map';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Medico } from '../../models/medico.model';
+import swal from 'sweetalert';
 
 @Injectable({
     providedIn: 'root'

@@ -5,6 +5,7 @@ import { URL_API } from 'src/app/config/config';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UsuarioService } from '../usuario/usuario.service';
+import swal from 'sweetalert';
 
 
 @Injectable({

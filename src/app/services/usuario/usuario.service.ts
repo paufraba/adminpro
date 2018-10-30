@@ -5,7 +5,8 @@ import { URL_API } from '../../config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
-import { empty, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
+import swal from 'sweetalert';
 
 
 @Injectable({
@@ -21,6 +22,25 @@ export class UsuarioService {
         public _sa: SubirArchivoService) {
         // console.log('Servicio de usuario listo');
         this.cargarStorage();
+    }
+
+    renuevaToken() {
+        const url = URL_API + `/login/renovartoken?token=${this.token}`;
+
+        return this.http.get(url).pipe(
+            map((resp: any) => {
+                this.token = resp.token;
+                localStorage.setItem('token', this.token);
+
+                return true;
+            })
+            , catchError(err => {
+                console.error(err.error.mensaje);
+                swal('No se pudo renovar el token', 'error');
+                this.router.navigate(['/login']);
+                return throwError(err);
+            })
+        );
     }
 
     estaLogueado() {
